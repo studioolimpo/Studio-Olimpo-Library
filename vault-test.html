@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Studio Olimpo — Vault Test</title>
+  <title>Studio Olimpo — Vault</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -15,36 +15,47 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 24px;
+      padding: 60px 20px;
+      gap: 16px;
     }
 
     h1 {
-      font-size: 18px;
+      font-size: 14px;
       font-weight: 400;
-      opacity: 0.5;
+      opacity: 0.4;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 32px;
+    }
+
+    .vault-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 440px;
     }
 
     .vault-copy {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 14px 28px;
-      background: #1a1a1a;
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.1);
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 10px;
       cursor: pointer;
       font-family: inherit;
-      font-size: 15px;
+      font-size: 14px;
+      color: #fff;
       transition: all 0.2s ease;
       position: relative;
       overflow: hidden;
     }
 
     .vault-copy:hover {
-      background: #252525;
-      border-color: rgba(255,255,255,0.2);
+      background: #1c1c1c;
+      border-color: rgba(255,255,255,0.15);
     }
 
     .vault-copy:disabled {
@@ -52,11 +63,21 @@
       cursor: wait;
     }
 
-    .vault-copy.is-copied {
-      border-color: #4ade80;
+    .vault-copy .name {
+      font-weight: 500;
     }
 
-    .vault-copy.is-copied .label { opacity: 0; }
+    .vault-copy .category {
+      font-size: 12px;
+      opacity: 0.4;
+      margin-top: 2px;
+    }
+
+    .vault-copy .action {
+      font-size: 12px;
+      opacity: 0.5;
+      white-space: nowrap;
+    }
 
     .vault-copy .success {
       position: absolute;
@@ -64,29 +85,36 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      background: #141414;
       color: #4ade80;
       font-weight: 600;
+      font-size: 13px;
       opacity: 0;
       transition: opacity 0.2s ease;
+    }
+
+    .vault-copy.is-copied {
+      border-color: rgba(74, 222, 128, 0.3);
     }
 
     .vault-copy.is-copied .success { opacity: 1; }
 
     .vault-copy.is-error {
-      border-color: #f87171;
+      border-color: rgba(248, 113, 113, 0.3);
     }
 
-    .vault-copy.is-error .label::after {
-      content: ' — Error!';
+    .vault-copy.is-error .action {
       color: #f87171;
+      opacity: 1;
     }
 
     .info {
-      font-size: 13px;
-      opacity: 0.35;
+      font-size: 12px;
+      opacity: 0.25;
       max-width: 400px;
       text-align: center;
-      line-height: 1.6;
+      line-height: 1.7;
+      margin-top: 32px;
     }
   </style>
 </head>
@@ -94,18 +122,40 @@
 
   <h1>Studio Olimpo — Vault</h1>
 
-  <button
-    class="vault-copy"
-    data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/button/button-text.json"
-    data-name="Button Text"
-  >
-    <span class="label">📋 Copy to Webflow — Button Text</span>
-    <span class="success">✓ Copied! Now Cmd+V in Webflow</span>
-  </button>
+  <div class="vault-grid">
+
+    <!-- BUTTON TEXT -->
+    <button
+      class="vault-copy"
+      data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/button/button-text.json"
+      data-name="Button Text"
+    >
+      <div>
+        <div class="name">Button Text</div>
+        <div class="category">button</div>
+      </div>
+      <div class="action">Copy to Webflow</div>
+      <div class="success">✓ Copied — Cmd+V in Webflow</div>
+    </button>
+
+    <!-- SMOOOTHY SLIDER -->
+    <button
+      class="vault-copy"
+      data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/slider/smooothy-slider-v1.json"
+      data-name="Smooothy Slider"
+    >
+      <div>
+        <div class="name">Smooothy Slider</div>
+        <div class="category">slider</div>
+      </div>
+      <div class="action">Copy to Webflow</div>
+      <div class="success">✓ Copied — Cmd+V in Webflow</div>
+    </button>
+
+  </div>
 
   <p class="info">
-    Click the button, then open Webflow Designer,<br>
-    select a container, and press Cmd+V.
+    Click a component → then open Webflow Designer → select a container → Cmd+V
   </p>
 
   <script>
@@ -113,12 +163,11 @@
     // VAULT — Copy to Webflow
     // =============================================
 
-    // Cache per evitare fetch ripetuti
     const cache = {};
 
     document.querySelectorAll('.vault-copy').forEach(btn => {
 
-      // PREFETCH al hover — così al click la copy è istantanea (Safari-safe)
+      // Prefetch al hover
       btn.addEventListener('mouseenter', async () => {
         const url = btn.getAttribute('data-vault');
         if (url && !cache[url]) {
@@ -128,13 +177,11 @@
               const data = await res.json();
               cache[url] = JSON.stringify(data);
             }
-          } catch (e) {
-            // Silenzioso — riproverà al click
-          }
+          } catch (e) {}
         }
       }, { once: true });
 
-      // CLICK — Copia nel clipboard
+      // Click → Copy
       btn.addEventListener('click', async () => {
         const url = btn.getAttribute('data-vault');
         if (!url || btn.disabled) return;
@@ -142,7 +189,6 @@
         btn.disabled = true;
 
         try {
-          // 1. Prendi il JSON (da cache o fetch)
           let payload = cache[url];
           if (!payload) {
             const res = await fetch(url);
@@ -152,9 +198,6 @@
             cache[url] = payload;
           }
 
-          // 2. Copia nel clipboard come application/json
-          //    Metodo: synthetic copy via execCommand
-          //    (unico modo per settare MIME type custom)
           let copied = false;
 
           function onCopy(e) {
@@ -169,21 +212,19 @@
           document.removeEventListener('copy', onCopy);
 
           if (!copied) {
-            // Fallback: Clipboard API (solo text/plain)
             await navigator.clipboard.writeText(payload);
           }
 
-          // 3. Feedback visivo
           btn.classList.add('is-copied');
-          setTimeout(() => {
-            btn.classList.remove('is-copied');
-          }, 2000);
+          setTimeout(() => btn.classList.remove('is-copied'), 2000);
 
         } catch (err) {
           console.error('[Vault]', err);
+          btn.querySelector('.action').textContent = 'Error — retry';
           btn.classList.add('is-error');
           setTimeout(() => {
             btn.classList.remove('is-error');
+            btn.querySelector('.action').textContent = 'Copy to Webflow';
           }, 2000);
 
         } finally {
