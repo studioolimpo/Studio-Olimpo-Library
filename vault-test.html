@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Olimpo — Vault Test</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    h1 {
+      font-size: 18px;
+      font-weight: 400;
+      opacity: 0.5;
+    }
+
+    .vault-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: #1a1a1a;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vault-copy:hover {
+      background: #252525;
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .vault-copy:disabled {
+      opacity: 0.4;
+      cursor: wait;
+    }
+
+    .vault-copy.is-copied {
+      border-color: #4ade80;
+    }
+
+    .vault-copy.is-copied .label { opacity: 0; }
+
+    .vault-copy .success {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4ade80;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .vault-copy.is-copied .success { opacity: 1; }
+
+    .vault-copy.is-error {
+      border-color: #f87171;
+    }
+
+    .vault-copy.is-error .label::after {
+      content: ' — Error!';
+      color: #f87171;
+    }
+
+    .info {
+      font-size: 13px;
+      opacity: 0.35;
+      max-width: 400px;
+      text-align: center;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Studio Olimpo — Vault</h1>
+
+  <button
+    class="vault-copy"
+    data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/button/button-text.json"
+    data-name="Button Text"
+  >
+    <span class="label">📋 Copy to Webflow — Button Text</span>
+    <span class="success">✓ Copied! Now Cmd+V in Webflow</span>
+  </button>
+
+  <p class="info">
+    Click the button, then open Webflow Designer,<br>
+    select a container, and press Cmd+V.
+  </p>
+
+  <script>
+    // =============================================
+    // VAULT — Copy to Webflow
+    // =============================================
+
+    // Cache per evitare fetch ripetuti
+    const cache = {};
+
+    document.querySelectorAll('.vault-copy').forEach(btn => {
+
+      // PREFETCH al hover — così al click la copy è istantanea (Safari-safe)
+      btn.addEventListener('mouseenter', async () => {
+        const url = btn.getAttribute('data-vault');
+        if (url && !cache[url]) {
+          try {
+            const res = await fetch(url);
+            if (res.ok) {
+              const data = await res.json();
+              cache[url] = JSON.stringify(data);
+            }
+          } catch (e) {
+            // Silenzioso — riproverà al click
+          }
+        }
+      }, { once: true });
+
+      // CLICK — Copia nel clipboard
+      btn.addEventListener('click', async () => {
+        const url = btn.getAttribute('data-vault');
+        if (!url || btn.disabled) return;
+
+        btn.disabled = true;
+
+        try {
+          // 1. Prendi il JSON (da cache o fetch)
+          let payload = cache[url];
+          if (!payload) {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error('Fetch failed: ' + res.status);
+            const data = await res.json();
+            payload = JSON.stringify(data);
+            cache[url] = payload;
+          }
+
+          // 2. Copia nel clipboard come application/json
+          //    Metodo: synthetic copy via execCommand
+          //    (unico modo per settare MIME type custom)
+          let copied = false;
+
+          function onCopy(e) {
+            e.preventDefault();
+            e.clipboardData.setData('application/json', payload);
+            e.clipboardData.setData('text/plain', payload);
+            copied = true;
+          }
+
+          document.addEventListener('copy', onCopy);
+          document.execCommand('copy');
+          document.removeEventListener('copy', onCopy);
+
+          if (!copied) {
+            // Fallback: Clipboard API (solo text/plain)
+            await navigator.clipboard.writeText(payload);
+          }
+
+          // 3. Feedback visivo
+          btn.classList.add('is-copied');
+          setTimeout(() => {
+            btn.classList.remove('is-copied');
+          }, 2000);
+
+        } catch (err) {
+          console.error('[Vault]', err);
+          btn.classList.add('is-error');
+          setTimeout(() => {
+            btn.classList.remove('is-error');
+          }, 2000);
+
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
