@@ -1,0 +1,476 @@
+{
+  "type": "@webflow/XscpData",
+  "payload": {
+    "nodes": [
+      {
+        "_id": "8c5e5f81-863d-5fc9-0e0c-21dd4a415c36",
+        "type": "DOM",
+        "tag": "div",
+        "classes": [
+          "2357ead3-05c1-f81c-f064-d78310894fb7"
+        ],
+        "children": [
+          "e9423548-b281-f397-6ef5-82aead675010",
+          "55259bca-85ab-f4c2-23a1-f6a8e2d2701d"
+        ],
+        "data": {
+          "tag": "div",
+          "attributes": [
+            {
+              "name": "",
+              "value": ""
+            },
+            {
+              "name": "class",
+              "value": ""
+            },
+            {
+              "name": "data-button",
+              "value": " "
+            },
+            {
+              "name": "data-trigger",
+              "value": "hover focus"
+            }
+          ],
+          "slot": "",
+          "text": false,
+          "visibility": {
+            "conditions": [],
+            "keepInHtml": {
+              "tag": "False",
+              "val": {}
+            }
+          }
+        }
+      },
+      {
+        "_id": "e9423548-b281-f397-6ef5-82aead675010",
+        "type": "DOM",
+        "tag": "div",
+        "classes": [
+          "7b3480d8-33b7-b542-563a-31efc2cf2a40"
+        ],
+        "children": [
+          "9ed546b5-6f2b-932f-8696-82d95d0b1332",
+          "01e6cbac-72b2-6559-32d0-f731caadaa9c"
+        ],
+        "data": {
+          "tag": "div",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "u-cover-absolute"
+            },
+            {
+              "name": "",
+              "value": ""
+            }
+          ],
+          "slot": "",
+          "text": false,
+          "visibility": {
+            "conditions": [],
+            "keepInHtml": {
+              "tag": "False",
+              "val": {}
+            }
+          }
+        }
+      },
+      {
+        "_id": "9ed546b5-6f2b-932f-8696-82d95d0b1332",
+        "type": "Link",
+        "tag": "a",
+        "classes": [
+          "93913281-83d3-b13f-e975-3ef9b1e4c6d5"
+        ],
+        "children": [
+          "84068f23-e54b-7b32-d3b0-5b3553f827db"
+        ],
+        "data": {
+          "button": false,
+          "block": "inline",
+          "link": {
+            "mode": "external",
+            "url": "#"
+          },
+          "eventIds": [],
+          "attr": {
+            "id": ""
+          },
+          "devlink": {
+            "runtimeProps": {},
+            "slot": ""
+          },
+          "displayName": "",
+          "xattr": [
+            {
+              "name": "target",
+              "value": ""
+            }
+          ],
+          "search": {
+            "exclude": false
+          },
+          "visibility": {
+            "conditions": [],
+            "keepInHtml": {
+              "tag": "False",
+              "val": {}
+            }
+          }
+        }
+      },
+      {
+        "_id": "84068f23-e54b-7b32-d3b0-5b3553f827db",
+        "type": "DOM",
+        "tag": "div",
+        "classes": [
+          "0812a5be-ea56-3eaa-84e8-ec5d292c44b6",
+          "e3f9d02d-b7a7-6838-e949-9481486484a1"
+        ],
+        "children": [
+          "d12753bd-068d-ad8d-646a-78be66d77a89"
+        ],
+        "data": {
+          "tag": "span",
+          "attributes": [],
+          "slot": "",
+          "text": false,
+          "visibility": {
+            "conditions": [],
+            "keepInHtml": {
+              "tag": "False",
+              "val": {}
+            }
+          }
+        }
+      },
+      {
+        "_id": "d12753bd-068d-ad8d-646a-78be66d77a89",
+        "text": true,
+        "v": "Button Text"
+      },
+      {
+        "_id": "01e6cbac-72b2-6559-32d0-f731caadaa9c",
+        "type": "DOM",
+        "tag": "div",
+        "classes": [
+          "103f7858-4229-432c-4642-b4de0617a51a"
+        ],
+        "children": [
+          "42afbc65-7bd5-6fa8-d192-e37c4c230d7d"
+        ],
+        "data": {
+          "tag": "button",
+          "attributes": [
+            {
+              "name": "type",
+              "value": "button"
+            }
+          ],
+          "slot": "",
+          "text": false,
+          "visibility": {
+            "conditions": [
+              true
+            ],
+            "keepInHtml": {
+              "tag": "False",
+              "val": {}
+            }
+          }
+        }
+      },
+      {
+        "_id": "42afbc65-7bd5-6fa8-d192-e37c4c230d7d",
+        "type": "DOM",
+        "tag": "div",
+        "classes": [
+          "0812a5be-ea56-3eaa-84e8-ec5d292c44b6",
+          "e3f9d02d-b7a7-6838-e949-9481486484a1"
+        ],
+        "children": [
+          "757db04f-7e7e-5b34-3a1d-ea824d27c8a7"
+        ],
+        "data": {
+          "tag": "span",
+          "attributes": [],
+          "slot": "",
+          "text": false,
+          "visibility": {
+            "conditions": [],
+            "keepInHtml": {
+              "tag": "False",
+              "val": {}
+            }
+          }
+        }
+      },
+      {
+        "_id": "757db04f-7e7e-5b34-3a1d-ea824d27c8a7",
+        "text": true,
+        "v": "Button Text"
+      },
+      {
+        "_id": "55259bca-85ab-f4c2-23a1-f6a8e2d2701d",
+        "type": "Block",
+        "tag": "div",
+        "classes": [
+          "e486171f-b380-0a47-986c-44f534626e6e"
+        ],
+        "children": [
+          "ab25f7e2-399a-9317-431e-7367924dbe2b",
+          "23d30a05-5f0d-eccd-4238-f97f7be24739"
+        ],
+        "data": {
+          "text": false,
+          "tag": "div",
+          "devlink": {
+            "runtimeProps": {},
+            "slot": ""
+          },
+          "displayName": "",
+          "attr": {
+            "id": ""
+          },
+          "xattr": [],
+          "search": {
+            "exclude": false
+          },
+          "visibility": {
+            "conditions": [],
+            "keepInHtml": {
+              "tag": "False",
+              "val": {}
+            }
+          }
+        }
+      },
+      {
+        "_id": "ab25f7e2-399a-9317-431e-7367924dbe2b",
+        "type": "DOM",
+        "tag": "div",
+        "classes": [
+          "29fa0f9c-43e5-adac-6c7c-3d067a9e4268"
+        ],
+        "children": [
+          "a8511a63-b8a6-d722-0eab-62d72097b210"
+        ],
+        "data": {
+          "tag": "span",
+          "attributes": [
+            {
+              "name": "aria-hidden",
+              "value": "true"
+            },
+            {
+              "name": "class",
+              "value": "u-text-style-h1"
+            },
+            {
+              "name": "data-number",
+              "value": ""
+            }
+          ],
+          "slot": "",
+          "text": false,
+          "visibility": {
+            "conditions": [],
+            "keepInHtml": {
+              "tag": "False",
+              "val": {}
+            }
+          }
+        }
+      },
+      {
+        "_id": "a8511a63-b8a6-d722-0eab-62d72097b210",
+        "text": true,
+        "v": "Button Text"
+      },
+      {
+        "_id": "23d30a05-5f0d-eccd-4238-f97f7be24739",
+        "type": "Block",
+        "tag": "div",
+        "classes": [
+          "75010ea2-1467-7873-41a3-58511c98b4bf"
+        ],
+        "children": [],
+        "data": {
+          "text": false,
+          "tag": "div",
+          "devlink": {
+            "runtimeProps": {},
+            "slot": ""
+          },
+          "displayName": "",
+          "attr": {
+            "id": ""
+          },
+          "xattr": [],
+          "search": {
+            "exclude": false
+          },
+          "visibility": {
+            "conditions": [],
+            "keepInHtml": {
+              "tag": "False",
+              "val": {}
+            }
+          }
+        }
+      }
+    ],
+    "styles": [
+      {
+        "_id": "e3f9d02d-b7a7-6838-e949-9481486484a1",
+        "fake": false,
+        "type": "class",
+        "name": "u-sr-only",
+        "namespace": "",
+        "comb": "&",
+        "styleLess": "",
+        "variants": {},
+        "children": [],
+        "createdBy": "5b94700c7794ec3bc175efda",
+        "origin": null,
+        "selector": null
+      },
+      {
+        "_id": "75010ea2-1467-7873-41a3-58511c98b4bf",
+        "fake": false,
+        "type": "class",
+        "name": "button_main_icon",
+        "namespace": "",
+        "comb": "",
+        "styleLess": "position: absolute; left: auto; top: 0%; right: 0%; bottom: auto; display: flex; flex-direction: column; justify-content: center; flex-wrap: nowrap; align-items: center; flex-grow: 0; flex-shrink: 0; flex-basis: auto;",
+        "variants": {},
+        "children": [],
+        "createdBy": "5b94700c7794ec3bc175efda",
+        "origin": null,
+        "selector": null
+      },
+      {
+        "_id": "0812a5be-ea56-3eaa-84e8-ec5d292c44b6",
+        "fake": false,
+        "type": "class",
+        "name": "clickable_text",
+        "namespace": "",
+        "comb": "",
+        "styleLess": "",
+        "variants": {},
+        "children": [
+          "e3f9d02d-b7a7-6838-e949-9481486484a1"
+        ],
+        "createdBy": "5b94700c7794ec3bc175efda",
+        "origin": null,
+        "selector": null
+      },
+      {
+        "_id": "2357ead3-05c1-f81c-f064-d78310894fb7",
+        "fake": false,
+        "type": "class",
+        "name": "button_main_wrap",
+        "namespace": "",
+        "comb": "",
+        "styleLess": "position: relative; display: inline-block;",
+        "variants": {},
+        "children": [],
+        "createdBy": "5b94700c7794ec3bc175efda",
+        "origin": null,
+        "selector": null
+      },
+      {
+        "_id": "e486171f-b380-0a47-986c-44f534626e6e",
+        "fake": false,
+        "type": "class",
+        "name": "button_main_element",
+        "namespace": "",
+        "comb": "",
+        "styleLess": "position: relative; display: flex; height: 100%; padding-top: 0rem; padding-right: 2.5rem; padding-bottom: 0rem; padding-left: 2.5rem; justify-content: center; align-items: center; grid-column-gap: 0.5rem; grid-row-gap: 0.5rem; line-height: 1; text-align: center; vertical-align: middle; ---mode--collection-46b021ca-89a5-f6bd-951d-9cd6e4738eb2: base; ---mode--collection-8527ce3f-b0ac-c719-bfe1-e5f32af64e3f: base; color: @raw<|\n red|>;",
+        "variants": {},
+        "children": [],
+        "createdBy": "5b94700c7794ec3bc175efda",
+        "origin": null,
+        "selector": null
+      },
+      {
+        "_id": "29fa0f9c-43e5-adac-6c7c-3d067a9e4268",
+        "fake": false,
+        "type": "class",
+        "name": "button_main_text",
+        "namespace": "",
+        "comb": "",
+        "styleLess": "position: relative; line-height: @raw<|inherit|>; max-width: @raw<|calc(var(--number) * 1ch)|>;",
+        "variants": {},
+        "children": [
+          "1fd26153-c90b-8278-875c-32a12358799f",
+          "988d703c-5226-2e76-9d79-77757e4d7564"
+        ],
+        "createdBy": "5b94700c7794ec3bc175efda",
+        "origin": null,
+        "selector": null
+      },
+      {
+        "_id": "7b3480d8-33b7-b542-563a-31efc2cf2a40",
+        "fake": false,
+        "type": "class",
+        "name": "clickable_wrap",
+        "namespace": "",
+        "comb": "",
+        "styleLess": "z-index: 3; border-radius: @raw<|inherit|>;",
+        "variants": {},
+        "children": [],
+        "createdBy": "5b94700c7794ec3bc175efda",
+        "origin": null,
+        "selector": null
+      },
+      {
+        "_id": "93913281-83d3-b13f-e975-3ef9b1e4c6d5",
+        "fake": false,
+        "type": "class",
+        "name": "clickable_link",
+        "namespace": "",
+        "comb": "",
+        "styleLess": "position: absolute; left: 0%; top: 0%; right: 0%; bottom: 0%; display: block; width: 100%; height: 100%; border-radius: @raw<|inherit|>;",
+        "variants": {},
+        "children": [],
+        "createdBy": "5b94700c7794ec3bc175efda",
+        "origin": null,
+        "selector": null
+      },
+      {
+        "_id": "103f7858-4229-432c-4642-b4de0617a51a",
+        "fake": false,
+        "type": "class",
+        "name": "clickable_btn",
+        "namespace": "",
+        "comb": "",
+        "styleLess": "position: absolute; left: 0%; top: 0%; right: 0%; bottom: 0%; display: none; width: 100%; height: 100%; border-radius: @raw<|inherit|>;",
+        "variants": {},
+        "children": [],
+        "createdBy": "5b94700c7794ec3bc175efda",
+        "origin": null,
+        "selector": null
+      }
+    ],
+    "assets": [],
+    "ix1": [],
+    "ix2": {
+      "interactions": [],
+      "events": [],
+      "actionLists": []
+    }
+  },
+  "meta": {
+    "droppedLinks": 0,
+    "dynBindRemovedCount": 0,
+    "dynListBindRemovedCount": 0,
+    "paginationRemovedCount": 0,
+    "universalBindingsRemovedCount": 1,
+    "unlinkedSymbolCount": 1,
+    "codeComponentsRemovedCount": 0
+  }
+}
