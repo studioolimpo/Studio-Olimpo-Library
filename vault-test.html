@@ -31,52 +31,96 @@
     .vault-grid {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
       width: 100%;
-      max-width: 440px;
+      max-width: 480px;
     }
 
+    /* ---- Component Card ---- */
+    .vault-card {
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .vault-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .vault-card__name {
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .vault-card__category {
+      font-size: 12px;
+      opacity: 0.35;
+    }
+
+    /* ---- Rename Input ---- */
+    .vault-card__rename {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .vault-card__input {
+      flex: 1;
+      padding: 10px 14px;
+      background: #0a0a0a;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: #fff;
+      font-family: monospace;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .vault-card__input:focus {
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .vault-card__input::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ---- Copy Button ---- */
     .vault-copy {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 16px 24px;
-      background: #141414;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 20px;
+      background: #1e1e1e;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
       cursor: pointer;
       font-family: inherit;
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 500;
       color: #fff;
       transition: all 0.2s ease;
       position: relative;
       overflow: hidden;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .vault-copy:hover {
-      background: #1c1c1c;
-      border-color: rgba(255,255,255,0.15);
+      background: #282828;
+      border-color: rgba(255,255,255,0.2);
     }
 
     .vault-copy:disabled {
       opacity: 0.4;
       cursor: wait;
-    }
-
-    .vault-copy .name {
-      font-weight: 500;
-    }
-
-    .vault-copy .category {
-      font-size: 12px;
-      opacity: 0.4;
-      margin-top: 2px;
-    }
-
-    .vault-copy .action {
-      font-size: 12px;
-      opacity: 0.5;
-      white-space: nowrap;
     }
 
     .vault-copy .success {
@@ -85,12 +129,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #141414;
+      background: #1e1e1e;
       color: #4ade80;
       font-weight: 600;
       font-size: 13px;
       opacity: 0;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.15s ease;
     }
 
     .vault-copy.is-copied {
@@ -103,18 +147,18 @@
       border-color: rgba(248, 113, 113, 0.3);
     }
 
-    .vault-copy.is-error .action {
-      color: #f87171;
-      opacity: 1;
-    }
-
     .info {
       font-size: 12px;
       opacity: 0.25;
-      max-width: 400px;
+      max-width: 440px;
       text-align: center;
       line-height: 1.7;
       margin-top: 32px;
+    }
+
+    .info strong {
+      opacity: 1;
+      color: rgba(255,255,255,0.5);
     }
   </style>
 </head>
@@ -125,47 +169,155 @@
   <div class="vault-grid">
 
     <!-- BUTTON TEXT -->
-    <button
-      class="vault-copy"
-      data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/button/button-text.json"
-      data-name="Button Text"
-    >
-      <div>
-        <div class="name">Button Text</div>
-        <div class="category">button</div>
+    <div class="vault-card">
+      <div class="vault-card__header">
+        <div>
+          <div class="vault-card__name">Button Text</div>
+          <div class="vault-card__category">button</div>
+        </div>
       </div>
-      <div class="action">Copy to Webflow</div>
-      <div class="success">✓ Copied — Cmd+V in Webflow</div>
-    </button>
+      <div class="vault-card__rename">
+        <input
+          class="vault-card__input"
+          type="text"
+          data-prefix="button_main"
+          placeholder="button_main"
+          value="button_main"
+          spellcheck="false"
+          autocomplete="off"
+        />
+        <button
+          class="vault-copy"
+          data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/button/button-text.json"
+          data-prefix="button_main"
+        >
+          <span class="label">Copy</span>
+          <span class="success">✓ Copied</span>
+        </button>
+      </div>
+    </div>
 
     <!-- SMOOOTHY SLIDER -->
-    <button
-      class="vault-copy"
-      data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/slider/smooothy-slider-v1.json"
-      data-name="Smooothy Slider"
-    >
-      <div>
-        <div class="name">Smooothy Slider</div>
-        <div class="category">slider</div>
+    <div class="vault-card">
+      <div class="vault-card__header">
+        <div>
+          <div class="vault-card__name">Smooothy Slider</div>
+          <div class="vault-card__category">slider</div>
+        </div>
       </div>
-      <div class="action">Copy to Webflow</div>
-      <div class="success">✓ Copied — Cmd+V in Webflow</div>
-    </button>
+      <div class="vault-card__rename">
+        <input
+          class="vault-card__input"
+          type="text"
+          data-prefix="slider"
+          placeholder="slider"
+          value="slider"
+          spellcheck="false"
+          autocomplete="off"
+        />
+        <button
+          class="vault-copy"
+          data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/slider/smooothy-slider-v1.json"
+          data-prefix="slider"
+        >
+          <span class="label">Copy</span>
+          <span class="success">✓ Copied</span>
+        </button>
+      </div>
+    </div>
 
   </div>
 
   <p class="info">
-    Click a component → then open Webflow Designer → select a container → Cmd+V
+    Scrivi il nome che vuoi per le classi → clicca <strong>Copy</strong> →
+    vai nel Webflow Designer → <strong>Cmd+V</strong>
   </p>
 
   <script>
     // =============================================
-    // VAULT — Copy to Webflow
+    // VAULT — Copy to Webflow with class renaming
     // =============================================
 
     const cache = {};
 
+    // ----------------------------------------------------------
+    // Rinomina le classi nel JSON
+    // Prende il prefisso originale (es. "button_main")
+    // e lo sostituisce con quello nuovo (es. "cta_hero")
+    // in tutti i nomi delle classi dentro styles[].name
+    // e dentro i nodi HtmlEmbed (campo "v") se contengono
+    // riferimenti alle classi
+    // ----------------------------------------------------------
+    function renameClasses(jsonString, oldPrefix, newPrefix) {
+      if (!oldPrefix || !newPrefix || oldPrefix === newPrefix) return jsonString;
+
+      try {
+        const data = JSON.parse(jsonString);
+
+        // 1. Rinomina negli styles
+        if (data.payload && data.payload.styles) {
+          data.payload.styles.forEach(style => {
+            if (style.name && style.name.startsWith(oldPrefix)) {
+              style.name = newPrefix + style.name.slice(oldPrefix.length);
+            }
+          });
+        }
+
+        // 2. Rinomina nei nodi HtmlEmbed (script/style interni)
+        if (data.payload && data.payload.nodes) {
+          data.payload.nodes.forEach(node => {
+            // Campo "v" degli HtmlEmbed
+            if (node.v && typeof node.v === 'string') {
+              node.v = node.v.replaceAll(oldPrefix, newPrefix);
+            }
+            // Anche dentro data.embed.meta.html
+            if (node.data && node.data.embed && node.data.embed.meta && node.data.embed.meta.html) {
+              node.data.embed.meta.html = node.data.embed.meta.html.replaceAll(oldPrefix, newPrefix);
+            }
+          });
+        }
+
+        return JSON.stringify(data);
+      } catch (e) {
+        // Se il parse fallisce, fallback con replaceAll sulla stringa
+        return jsonString.replaceAll(oldPrefix, newPrefix);
+      }
+    }
+
+    // ----------------------------------------------------------
+    // Formatta l'input: minuscolo, no spazi, solo a-z 0-9 - _
+    // ----------------------------------------------------------
+    function sanitizeInput(input, original) {
+      let val = input.value
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^a-z0-9\-_]/g, '')
+        .replace(/^[-_]+|[-_]+$/g, '');
+      if (!val) val = original;
+      input.value = val;
+    }
+
+    // ----------------------------------------------------------
+    // Setup per ogni bottone
+    // ----------------------------------------------------------
     document.querySelectorAll('.vault-copy').forEach(btn => {
+      const card = btn.closest('.vault-card');
+      const input = card.querySelector('.vault-card__input');
+      const originalPrefix = btn.getAttribute('data-prefix');
+
+      // Formatta l'input al blur
+      input.addEventListener('blur', () => sanitizeInput(input, originalPrefix));
+
+      // Seleziona tutto al focus
+      input.addEventListener('focus', () => input.select());
+
+      // Copy con Enter dall'input
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
 
       // Prefetch al hover
       btn.addEventListener('mouseenter', async () => {
@@ -181,14 +333,19 @@
         }
       }, { once: true });
 
-      // Click → Copy
+      // Click → Rename + Copy
       btn.addEventListener('click', async () => {
         const url = btn.getAttribute('data-vault');
         if (!url || btn.disabled) return;
 
+        // Sanitize prima di copiare
+        sanitizeInput(input, originalPrefix);
+        const newPrefix = input.value;
+
         btn.disabled = true;
 
         try {
+          // 1. Fetch (o cache)
           let payload = cache[url];
           if (!payload) {
             const res = await fetch(url);
@@ -198,12 +355,16 @@
             cache[url] = payload;
           }
 
+          // 2. Rinomina le classi
+          const renamedPayload = renameClasses(payload, originalPrefix, newPrefix);
+
+          // 3. Copia nel clipboard
           let copied = false;
 
           function onCopy(e) {
             e.preventDefault();
-            e.clipboardData.setData('application/json', payload);
-            e.clipboardData.setData('text/plain', payload);
+            e.clipboardData.setData('application/json', renamedPayload);
+            e.clipboardData.setData('text/plain', renamedPayload);
             copied = true;
           }
 
@@ -212,20 +373,17 @@
           document.removeEventListener('copy', onCopy);
 
           if (!copied) {
-            await navigator.clipboard.writeText(payload);
+            await navigator.clipboard.writeText(renamedPayload);
           }
 
+          // 4. Feedback
           btn.classList.add('is-copied');
-          setTimeout(() => btn.classList.remove('is-copied'), 2000);
+          setTimeout(() => btn.classList.remove('is-copied'), 1500);
 
         } catch (err) {
           console.error('[Vault]', err);
-          btn.querySelector('.action').textContent = 'Error — retry';
           btn.classList.add('is-error');
-          setTimeout(() => {
-            btn.classList.remove('is-error');
-            btn.querySelector('.action').textContent = 'Copy to Webflow';
-          }, 2000);
+          setTimeout(() => btn.classList.remove('is-error'), 2000);
 
         } finally {
           btn.disabled = false;
