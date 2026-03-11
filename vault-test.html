@@ -31,9 +31,31 @@
     .vault-grid {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 24px;
       width: 100%;
       max-width: 480px;
+    }
+
+    /* ---- Category Section ---- */
+    .vault-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .vault-section__title {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      opacity: 0.3;
+      padding-left: 4px;
+    }
+
+    .vault-section__list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     /* ---- Component Card ---- */
@@ -168,90 +190,131 @@
 
   <div class="vault-grid">
 
-    <!-- HEADER -->
-    <div class="vault-card">
-      <div class="vault-card__header">
-        <div>
-          <div class="vault-card__name">Header</div>
-          <div class="vault-card__category">nav</div>
+    <!-- ==================== NAV ==================== -->
+    <div class="vault-section">
+      <div class="vault-section__title">Nav</div>
+      <div class="vault-section__list">
+
+        <!-- HEADER -->
+        <div class="vault-card">
+          <div class="vault-card__header">
+            <div class="vault-card__name">Header</div>
+          </div>
+          <div class="vault-card__rename">
+            <input
+              class="vault-card__input"
+              type="text"
+              data-prefix="header"
+              placeholder="header"
+              value="header"
+              spellcheck="false"
+              autocomplete="off"
+            />
+            <button
+              class="vault-copy"
+              data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/nav/header.json"
+              data-prefix="header"
+            >
+              <span class="label">Copy</span>
+              <span class="success">✓ Copied</span>
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="vault-card__rename">
-        <input
-          class="vault-card__input"
-          type="text"
-          data-prefix="header"
-          placeholder="header"
-          value="header"
-          spellcheck="false"
-          autocomplete="off"
-        />
-        <button
-          class="vault-copy"
-          data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/nav/header.json"
-          data-prefix="header"
-        >
-          <span class="label">Copy</span>
-          <span class="success">✓ Copied</span>
-        </button>
+
+        <!-- MENU BUTTON -->
+        <div class="vault-card">
+          <div class="vault-card__header">
+            <div class="vault-card__name">Menu Button</div>
+          </div>
+          <div class="vault-card__rename">
+            <input
+              class="vault-card__input"
+              type="text"
+              data-prefix="menu_btn"
+              placeholder="menu_btn"
+              value="menu_btn"
+              spellcheck="false"
+              autocomplete="off"
+            />
+            <button
+              class="vault-copy"
+              data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/nav/menu_button.json"
+              data-prefix="menu_btn"
+            >
+              <span class="label">Copy</span>
+              <span class="success">✓ Copied</span>
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- BUTTON TEXT -->
-    <div class="vault-card">
-      <div class="vault-card__header">
-        <div>
-          <div class="vault-card__name">Button Text</div>
-          <div class="vault-card__category">button</div>
+    <!-- ==================== BUTTON ==================== -->
+    <div class="vault-section">
+      <div class="vault-section__title">Button</div>
+      <div class="vault-section__list">
+
+        <!-- BUTTON TEXT -->
+        <div class="vault-card">
+          <div class="vault-card__header">
+            <div class="vault-card__name">Button Text</div>
+          </div>
+          <div class="vault-card__rename">
+            <input
+              class="vault-card__input"
+              type="text"
+              data-prefix="button_main"
+              placeholder="button_main"
+              value="button_main"
+              spellcheck="false"
+              autocomplete="off"
+            />
+            <button
+              class="vault-copy"
+              data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/button/button-text.json"
+              data-prefix="button_main"
+            >
+              <span class="label">Copy</span>
+              <span class="success">✓ Copied</span>
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="vault-card__rename">
-        <input
-          class="vault-card__input"
-          type="text"
-          data-prefix="button_main"
-          placeholder="button_main"
-          value="button_main"
-          spellcheck="false"
-          autocomplete="off"
-        />
-        <button
-          class="vault-copy"
-          data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/button/button-text.json"
-          data-prefix="button_main"
-        >
-          <span class="label">Copy</span>
-          <span class="success">✓ Copied</span>
-        </button>
+
       </div>
     </div>
 
-    <!-- SMOOOTHY SLIDER -->
-    <div class="vault-card">
-      <div class="vault-card__header">
-        <div>
-          <div class="vault-card__name">Smooothy Slider</div>
-          <div class="vault-card__category">slider</div>
+    <!-- ==================== SLIDER ==================== -->
+    <div class="vault-section">
+      <div class="vault-section__title">Slider</div>
+      <div class="vault-section__list">
+
+        <!-- SMOOOTHY SLIDER -->
+        <div class="vault-card">
+          <div class="vault-card__header">
+            <div class="vault-card__name">Smooothy Slider</div>
+          </div>
+          <div class="vault-card__rename">
+            <input
+              class="vault-card__input"
+              type="text"
+              data-prefix="slider"
+              placeholder="slider"
+              value="slider"
+              spellcheck="false"
+              autocomplete="off"
+            />
+            <button
+              class="vault-copy"
+              data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/slider/smooothy-slider-v1.json"
+              data-prefix="slider"
+            >
+              <span class="label">Copy</span>
+              <span class="success">✓ Copied</span>
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="vault-card__rename">
-        <input
-          class="vault-card__input"
-          type="text"
-          data-prefix="slider"
-          placeholder="slider"
-          value="slider"
-          spellcheck="false"
-          autocomplete="off"
-        />
-        <button
-          class="vault-copy"
-          data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/slider/smooothy-slider-v1.json"
-          data-prefix="slider"
-        >
-          <span class="label">Copy</span>
-          <span class="success">✓ Copied</span>
-        </button>
+
       </div>
     </div>
 
