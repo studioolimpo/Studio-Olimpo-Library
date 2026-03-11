@@ -168,6 +168,35 @@
 
   <div class="vault-grid">
 
+    <!-- HEADER -->
+    <div class="vault-card">
+      <div class="vault-card__header">
+        <div>
+          <div class="vault-card__name">Header</div>
+          <div class="vault-card__category">nav</div>
+        </div>
+      </div>
+      <div class="vault-card__rename">
+        <input
+          class="vault-card__input"
+          type="text"
+          data-prefix="header"
+          placeholder="header"
+          value="header"
+          spellcheck="false"
+          autocomplete="off"
+        />
+        <button
+          class="vault-copy"
+          data-vault="https://cdn.jsdelivr.net/gh/studioolimpo/Studio-Olimpo-Library@main/nav/header.json"
+          data-prefix="header"
+        >
+          <span class="label">Copy</span>
+          <span class="success">✓ Copied</span>
+        </button>
+      </div>
+    </div>
+
     <!-- BUTTON TEXT -->
     <div class="vault-card">
       <div class="vault-card__header">
@@ -240,21 +269,12 @@
 
     const cache = {};
 
-    // ----------------------------------------------------------
-    // Rinomina le classi nel JSON
-    // Prende il prefisso originale (es. "button_main")
-    // e lo sostituisce con quello nuovo (es. "cta_hero")
-    // in tutti i nomi delle classi dentro styles[].name
-    // e dentro i nodi HtmlEmbed (campo "v") se contengono
-    // riferimenti alle classi
-    // ----------------------------------------------------------
     function renameClasses(jsonString, oldPrefix, newPrefix) {
       if (!oldPrefix || !newPrefix || oldPrefix === newPrefix) return jsonString;
 
       try {
         const data = JSON.parse(jsonString);
 
-        // 1. Rinomina negli styles
         if (data.payload && data.payload.styles) {
           data.payload.styles.forEach(style => {
             if (style.name && style.name.startsWith(oldPrefix)) {
@@ -263,14 +283,11 @@
           });
         }
 
-        // 2. Rinomina nei nodi HtmlEmbed (script/style interni)
         if (data.payload && data.payload.nodes) {
           data.payload.nodes.forEach(node => {
-            // Campo "v" degli HtmlEmbed
             if (node.v && typeof node.v === 'string') {
               node.v = node.v.replaceAll(oldPrefix, newPrefix);
             }
-            // Anche dentro data.embed.meta.html
             if (node.data && node.data.embed && node.data.embed.meta && node.data.embed.meta.html) {
               node.data.embed.meta.html = node.data.embed.meta.html.replaceAll(oldPrefix, newPrefix);
             }
@@ -279,14 +296,10 @@
 
         return JSON.stringify(data);
       } catch (e) {
-        // Se il parse fallisce, fallback con replaceAll sulla stringa
         return jsonString.replaceAll(oldPrefix, newPrefix);
       }
     }
 
-    // ----------------------------------------------------------
-    // Formatta l'input: minuscolo, no spazi, solo a-z 0-9 - _
-    // ----------------------------------------------------------
     function sanitizeInput(input, original) {
       let val = input.value
         .toLowerCase()
@@ -297,21 +310,13 @@
       input.value = val;
     }
 
-    // ----------------------------------------------------------
-    // Setup per ogni bottone
-    // ----------------------------------------------------------
     document.querySelectorAll('.vault-copy').forEach(btn => {
       const card = btn.closest('.vault-card');
       const input = card.querySelector('.vault-card__input');
       const originalPrefix = btn.getAttribute('data-prefix');
 
-      // Formatta l'input al blur
       input.addEventListener('blur', () => sanitizeInput(input, originalPrefix));
-
-      // Seleziona tutto al focus
       input.addEventListener('focus', () => input.select());
-
-      // Copy con Enter dall'input
       input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           e.preventDefault();
@@ -319,7 +324,6 @@
         }
       });
 
-      // Prefetch al hover
       btn.addEventListener('mouseenter', async () => {
         const url = btn.getAttribute('data-vault');
         if (url && !cache[url]) {
@@ -333,19 +337,16 @@
         }
       }, { once: true });
 
-      // Click → Rename + Copy
       btn.addEventListener('click', async () => {
         const url = btn.getAttribute('data-vault');
         if (!url || btn.disabled) return;
 
-        // Sanitize prima di copiare
         sanitizeInput(input, originalPrefix);
         const newPrefix = input.value;
 
         btn.disabled = true;
 
         try {
-          // 1. Fetch (o cache)
           let payload = cache[url];
           if (!payload) {
             const res = await fetch(url);
@@ -355,10 +356,8 @@
             cache[url] = payload;
           }
 
-          // 2. Rinomina le classi
           const renamedPayload = renameClasses(payload, originalPrefix, newPrefix);
 
-          // 3. Copia nel clipboard
           let copied = false;
 
           function onCopy(e) {
@@ -376,7 +375,6 @@
             await navigator.clipboard.writeText(renamedPayload);
           }
 
-          // 4. Feedback
           btn.classList.add('is-copied');
           setTimeout(() => btn.classList.remove('is-copied'), 1500);
 
